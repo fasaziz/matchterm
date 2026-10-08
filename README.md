@@ -1,8 +1,6 @@
 # MATCHTERM — terminal edition 0.1.2
 
-## Install directly from GitHub (PowerShell 7)
-
-Paste this into PowerShell 7 on Windows 11:
+## Install — paste into PowerShell 7
 
 ```powershell
 irm https://raw.githubusercontent.com/fasaziz/matchterm/main/Install.ps1 | iex
