@@ -1,5 +1,47 @@
 # MATCHTERM — terminal edition 0.1.2
 
+## Prerequisites — Windows 11
+
+Before installing MATCHTERM, set up these tools. Skip anything you already have.
+
+### 1. Install PowerShell 7
+
+Open your existing Windows PowerShell or Terminal and run:
+
+```powershell
+winget install --id Microsoft.PowerShell --source winget
+```
+
+Follow [Microsoft’s PowerShell installation guide](https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows) for alternative installation methods.
+
+### 2. Install Windows Terminal
+
+Install **Windows Terminal** from the Microsoft Store. [Microsoft’s Windows Terminal installation guide](https://learn.microsoft.com/en-us/windows/terminal/install) includes the download link and setup instructions.
+
+Windows Terminal is the window that displays the app; PowerShell 7 is the shell you select inside it.
+
+### 3. Open the PowerShell 7 profile
+
+Close and reopen Windows Terminal after installing PowerShell. Use the arrow beside the **+** button to select **PowerShell**. Check its version:
+
+```powershell
+$PSVersionTable.PSVersion
+```
+
+The major version should be **7**. If it shows **5**, you are using Windows PowerShell; switch to the PowerShell 7 profile.
+
+### 4. Check internet access and WinGet
+
+The initial setup needs an internet connection. Check that WinGet is available:
+
+```powershell
+winget --version
+```
+
+If it is missing, install or update **App Installer** from the Microsoft Store, then reopen Terminal.
+
+The MATCHTERM setup automatically installs **uv** if needed and downloads **Python 3.12**. You do not need to install Python or Git separately. Normal gameplay works offline.
+
 ## Install — paste into PowerShell 7
 
 ```powershell
