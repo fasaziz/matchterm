@@ -1,5 +1,16 @@
 # MATCHTERM — terminal edition 0.1.2
 
+## Install directly from GitHub (PowerShell 7)
+
+Paste this into PowerShell 7 on Windows 11:
+
+```powershell
+irm https://raw.githubusercontent.com/fasaziz/matchterm/main/Install.ps1 | iex
+```
+
+This runs the public install script, installs uv if needed, downloads Python 3.12 and MATCHTERM, updates your command path, and launches the app. No standalone Windows installer or Git installation is needed. Later, run `matchterm` to play. Saves remain in `%LOCALAPPDATA%\MATCHTERM`. You can inspect [Install.ps1](Install.ps1) before running it.
+
+
 A first testable offline terminal release for Windows 11, PowerShell 7 and Windows Terminal. No GitHub account or API key is required. An internet connection is needed for initial installation; normal gameplay is offline.
 
 ## Quick start
