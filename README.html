@@ -1,0 +1,265 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MATCHTERM — Illustrated guide</title><style>body{max-width:1100px;margin:32px auto;padding:0 24px;background:#0b120e;color:#d1e6d7;font:17px/1.6 system-ui}img{width:100%;height:auto;border:1px solid #365443}a{color:#a9edbb}pre{background:#17231a;padding:16px;overflow:auto}code{font-family:Consolas,monospace}table{border-collapse:collapse}td,th{padding:8px 16px;border:1px solid #365443}h1,h2,h3{color:#b4eac3}</style></head><body><h1>MATCHTERM — terminal edition 0.1.2</h1>
+<p>A first testable offline terminal release for Windows 11, PowerShell 7 and Windows Terminal. No GitHub account or API key is required. An internet connection is needed for initial installation; normal gameplay is offline.</p>
+<h2>Quick start</h2>
+<p>Already installed? Open PowerShell 7 and type:</p>
+<pre><code class="language-powershell">matchterm
+</code></pre>
+<p>Select your club, press <strong>Space</strong> to load a fixture, then press <strong>Space</strong> again to start it. Use <strong>Left / Right</strong> to switch views, <strong>Up / Down</strong> to browse, and <strong>Q</strong> to save and quit.</p>
+<p>Open <strong>README.html</strong> for this guide with pictures. README.md contains the same information for Markdown viewers. The game runs locally; this ZIP does not publish a website or create a GitHub repository.</p>
+<h2>Screenshots</h2>
+<p>These are captures of the actual terminal app in a test environment, with illustrative simulated results. Windows Terminal font and window styling may differ.</p>
+<h3>Live match</h3>
+<p><img src="docs/images/live-match.png" alt="Live match with named commentary and labelled team statistics" /></p>
+<h3>League table</h3>
+<p><img src="docs/images/league-table.png" alt="Completed season league table" /></p>
+<h3>Updating an existing installation</h3>
+<ol>
+<li>Press <strong>Q</strong> to close the running game.</li>
+<li>Extract the new release into its own folder. Do not mix installer files and wheels from different releases.</li>
+<li>Double-click <strong>Start-MATCHTERM.cmd</strong> in the new folder.</li>
+<li>Setup replaces the installed program and launches it with your existing save.</li>
+</ol>
+<p>The extracted ZIP is an installation package, not your save folder. Updating does not reset your active season. The game is copied into uv's managed tool environment, so you can move or delete the extracted folder after installation. Keep it if you want the screenshots, source or installer available later.</p>
+<h2>Player leaderboards</h2>
+<p><img src="docs/images/player-leaders.png" alt="Season goal and assist leaders; scroll in the app for cards" /></p>
+<h2>Install or update on your laptop</h2>
+<ol>
+<li>Extract the entire ZIP.</li>
+<li>Open the extracted <code>matchterm-terminal</code> folder.</li>
+<li>Double-click <strong>Start-MATCHTERM.cmd</strong>.</li>
+</ol>
+<p>Setup installs uv if missing, installs MATCHTERM and Python if needed, updates PATH, and launches the game in the same session. Internet is required for setup. Existing saves stay in <code>%LOCALAPPDATA%\MATCHTERM</code> when updating. The command file runs the bundled PowerShell installer with execution-policy bypass for that process only; it does not permanently change your execution policy.</p>
+<p>For later launches, open PowerShell 7 and run <code>matchterm</code>. If you prefer terminal setup, run <code>pwsh -NoProfile -ExecutionPolicy Bypass -File .\Install.ps1</code> from this folder.</p>
+<p>If setup reports that winget is missing, install <strong>App Installer</strong> from Microsoft Store and retry.</p>
+<h2>Play</h2>
+<p>Select a club before loading your first match. <strong>Play next match</strong> loads the fixture without starting it; <strong>Start match</strong> begins the live timeline. A match takes about three minutes at 1×. Results are locked for that season. Quitting and reopening resumes the same match and unrevealed events; it does not advance while closed.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Space</td>
+<td>Load next fixture / start match</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Simulate the current fixture to full time</td>
+</tr>
+<tr>
+<td>S</td>
+<td>Simulate the remaining season, after confirmation</td>
+</tr>
+<tr>
+<td>1 / 2 / 4</td>
+<td>Change speed</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Start a fresh season after completion</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Export the current season as JSON</td>
+</tr>
+<tr>
+<td>Q</td>
+<td>Save and quit</td>
+</tr>
+<tr>
+<td>Left / Right</td>
+<td>Switch between Match, Table, Player Stats and Match Results</td>
+</tr>
+<tr>
+<td>Up / Down</td>
+<td>Scroll content; Up at the top returns to the navigation bar, Down enters content</td>
+</tr>
+<tr>
+<td>Page Up / Page Down</td>
+<td>Scroll by a page</td>
+</tr>
+<tr>
+<td>Tab / Shift+Tab</td>
+<td>Move between controls</td>
+</tr>
+<tr>
+<td>Enter</td>
+<td>Activate the focused control</td>
+</tr>
+<tr>
+<td>Escape</td>
+<td>Cancel confirmation</td>
+</tr>
+</tbody>
+</table>
+<p>The tabs show live commentary, league standings, goals/assists/yellow/red leaderboards, and all committed league results. Click a saved result row to inspect its commentary. For comfortable display, use at least 120 columns and 35 rows; maximise Windows Terminal or reduce its font size. At small sizes keyboard shortcuts are available even if some buttons are clipped.</p>
+<h2>What each tab shows</h2>
+<table>
+<thead>
+<tr>
+<th>Tab</th>
+<th>Contents</th>
+<th>Navigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Match</td>
+<td>Current fixture, clock, named commentary and team-labelled statistics</td>
+<td>Up / Down scroll commentary</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>Standings for all 20 clubs and your club's record</td>
+<td>Up / Down move through rows</td>
+</tr>
+<tr>
+<td>Player Stats</td>
+<td>Top ten players for goals, assists, yellow cards and red cards</td>
+<td>Up / Down scroll through the four lists</td>
+</tr>
+<tr>
+<td>Match Results</td>
+<td>Every committed league result, including other clubs</td>
+<td>Up / Down select rows; Enter opens saved commentary</td>
+</tr>
+</tbody>
+</table>
+<p>Left / Right switches tabs from the view or navigation bar. Press Up at the top of a list to return focus to the navigation bar. Press Down from the bar to enter the selected view. Within the club selector, arrows select clubs instead; finish the selection with Enter. A saved-commentary window closes with Escape or its Close button.</p>
+<h2>How a season works</h2>
+<ul>
+<li>There are 20 clubs and 380 fixtures; each club has 19 home and 19 away matches.</li>
+<li>Loading a fixture prepares its events but waits for kickoff. After your first fixture is loaded, club selection is locked for that run.</li>
+<li>Start Match plays the timeline progressively. Statistics change as events are revealed.</li>
+<li>Sim to full time finishes the current fixture using its existing locked events; it cannot reroll the outcome.</li>
+<li>Sim whole season asks for confirmation. Cancel leaves the season untouched. Continue completes all remaining league fixtures and keeps results already recorded.</li>
+<li>Other clubs' preceding fixtures are simulated when your match finishes. Consequently, interim table rows may show different numbers of matches played.</li>
+<li>At completion, review the final table, player leaders and all match results. New season creates a fresh run of the same bundled 2026/27 schedule; it does not fetch a new real-world season.</li>
+<li>Older seasons remain in the database, but reopening them through an archive screen is not yet supported.</li>
+</ul>
+<p>Goals favour the forward pool. Assists favour creative players, and card events are assigned to named players. These are simplified simulation weights. Possession is estimated from simulated possession events, and xG is the sum of modelled shot probabilities; neither is measured real-world data. Some goals have no assist, including penalties. A second yellow is counted as both a yellow-card event and a dismissal.</p>
+<h2>Your local files</h2>
+<p>Paste this into the File Explorer address bar:</p>
+<pre><code class="language-text">%LOCALAPPDATA%\MATCHTERM
+</code></pre>
+<ul>
+<li><code>seasons.sqlite3</code>: all seasons, including the active game.</li>
+<li><code>seasons-backup.sqlite3</code>: backup taken before starting a fresh season.</li>
+<li><code>season-&lt;number&gt;.json</code>: files created with E (Export).</li>
+</ul>
+<p>The database saves periodically and after match events. Close with Q for an immediate clean save. A sudden process kill may lose up to roughly one second of clock progress but not reroll the locked events. Older seasons are retained when starting a new one, but this first release does not yet have an archive selection screen. Updates and uninstalling the app do not intentionally delete saves. For a manual backup, close the game and copy the entire save folder. Open it directly with:</p>
+<pre><code class="language-powershell">matchterm --open-save-folder
+</code></pre>
+<p>Browser seasons are separate and are not imported into this edition. Run one app window per save folder. Conflicting saves from another window are rejected instead of overwritten. A separate test save location is supported:</p>
+<pre><code class="language-powershell">matchterm --save-folder &quot;$env:USERPROFILE\Documents\MATCHTERM-Test&quot;
+</code></pre>
+<h2>Backups, exports and restoring</h2>
+<p><strong>Backup:</strong> quit with Q, then copy the entire <code>%LOCALAPPDATA%\MATCHTERM</code> folder to a safe location. SQLite may create <code>seasons.sqlite3-wal</code> and <code>seasons.sqlite3-shm</code> while the app is running; copying the full folder after closing is safer than copying an open database alone.</p>
+<p><strong>Automatic backup:</strong> <code>seasons-backup.sqlite3</code> is refreshed before starting a new season. It is one rolling backup, not a separate backup for every match or season.</p>
+<p><strong>Export:</strong> press E to write <code>season-&lt;number&gt;.json</code> into the save folder. Export includes the current season state, committed results, commentary and player totals. Exporting the same season again replaces that season's existing JSON export. JSON import is not yet supported, so retain the database for resuming play.</p>
+<p><strong>Restore a manual folder backup:</strong> close every MATCHTERM window. Rename the current save folder to <code>MATCHTERM-before-restore</code>, then copy the backed-up folder into the original <code>%LOCALAPPDATA%\MATCHTERM</code> location. Launch the game. Keep the renamed folder until you have confirmed the restored season is correct.</p>
+<p><strong>Restore the automatic database backup:</strong> close the app and copy the full current folder somewhere safe first. Create a fresh <code>MATCHTERM</code> save folder containing a copy of <code>seasons-backup.sqlite3</code> renamed to <code>seasons.sqlite3</code>, then launch. Do not carry old WAL/SHM files into the restored folder.</p>
+<p>For privacy, gameplay and saves remain local. No account, API key or cloud save service is used. Installing prerequisites connects to package download services. A custom save folder inside OneDrive or another synced directory follows that directory's own syncing rules. Saves are not shared between laptops automatically.</p>
+<h2>Storage estimates</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Approximate measured size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fresh season database</td>
+<td>16 KB</td>
+</tr>
+<tr>
+<td>Mid-match database</td>
+<td>24 KB</td>
+</tr>
+<tr>
+<td>Complete season database with 380 match logs</td>
+<td>3.3 MB</td>
+</tr>
+<tr>
+<td>Full-season JSON export</td>
+<td>4.9 MB</td>
+</tr>
+</tbody>
+</table>
+<p>Sizes vary with events and player names. Retained seasons increase database size, and the rolling backup can approximately double database storage. Exports are additional files. There is no season-deletion interface in this release.</p>
+<h2>Troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>matchterm</code> is not recognised</td>
+<td>Run Start-MATCHTERM.cmd again. It updates PATH for its own session and launches directly. For a manually opened PowerShell session, use the commands below.</td>
+</tr>
+<tr>
+<td><code>uv</code> is not recognised</td>
+<td>Use the bundled setup, which checks for uv and installs it via winget.</td>
+</tr>
+<tr>
+<td>winget is missing</td>
+<td>Install Microsoft's App Installer from Microsoft Store, then run setup again.</td>
+</tr>
+<tr>
+<td>The release wheel is missing</td>
+<td>Extract the entire ZIP and run the launcher beside Install.ps1. Do not run it from inside the ZIP preview.</td>
+</tr>
+<tr>
+<td>Installation fails during downloads</td>
+<td>Check your connection and retry setup. Copy the full error text if it continues.</td>
+</tr>
+<tr>
+<td>Buttons or rows are clipped</td>
+<td>Maximise Windows Terminal or reduce font size. Aim for at least 120 columns and 35 rows.</td>
+</tr>
+<tr>
+<td>Arrows do not scroll the list</td>
+<td>Finish any open club selector or dialog with Enter/Escape. Return to the desired tab and press Down to enter its content.</td>
+</tr>
+<tr>
+<td>Save conflict from another window</td>
+<td>Close the duplicate window and reopen one instance. The conflict guard prevents overwriting another session's changes.</td>
+</tr>
+<tr>
+<td>A save error or unsupported schema appears</td>
+<td>Keep the database intact and copy the error text. Do not delete it as a troubleshooting step.</td>
+</tr>
+</tbody>
+</table>
+<p>If the app installed successfully but a separate shell still cannot find it, run:</p>
+<pre><code class="language-powershell">$toolBin = (uv tool dir --bin | Out-String).Trim()
+$env:PATH = &quot;$toolBin;$env:PATH&quot;
+matchterm
+</code></pre>
+<p>For help, provide the app version, PowerShell version (<code>$PSVersionTable.PSVersion</code>), the action you were taking and the full error text. A screenshot of the terminal can help with layout issues. Avoid including private exports unless they are needed to investigate your save.</p>
+<h2>Uninstall</h2>
+<p>Close MATCHTERM, then run:</p>
+<pre><code class="language-powershell">uv tool uninstall matchterm
+</code></pre>
+<p>This removes the installed app. Your save folder and downloaded/extracted release files remain. Keep a backup before manually removing saves.</p>
+<h2>Scope and validation</h2>
+<p>The release has been tested in a Linux environment using Python 3.12 and Textual 1.0.0, including automated terminal UI interaction, confirmation cancellation, mid-match save/resume, full-season totals and reset. Installation and arrow-key navigation have also been confirmed by the user on Windows 11 with PowerShell 7.6.6 and Windows Terminal. The automated tests themselves ran on Linux, not Windows. This is a first test release, not a completed commercial release.</p>
+<p>Fixtures and squads are bundled snapshots from the browser prototype's official Premier League sources. No live data updates happen during play:</p>
+<ul>
+<li>https://www.premierleague.com/en/news/4675097/all-380-fixtures-for-202627-premier-league-season</li>
+<li>https://www.premierleague.com/en/news/4725682/all-20-premier-league-clubs-squad-numbers-for-202627-season</li>
+</ul>
+<p>Names and fixtures are real snapshot data; ratings, events and results are fictional. Forward/goalkeeper pools and simplified remaining role weights are illustrative, not an authoritative tactical database. Sent-off players are excluded from later events in that match; suspensions across matches, real lineups, injuries, transfers and substitutions are not modelled in this release. League tie-breaking uses points, goal difference, goals scored, then alphabetical order for unresolved ties.</p>
+<h2>Development / Git</h2>
+<p>The ZIP includes source, package metadata and tests, ready to put into your own private repository. No remote repository has been created. Keep saves and exports out of Git. Install from source with <code>uv tool install --python 3.12 .</code> or create a development environment with <code>uv venv</code>, then <code>uv pip install -e .</code>.</p>
+<p>Run engine tests: <code>python -m unittest discover -s tests -p test_engine.py</code>
+Run terminal UI tests: <code>python tests/test_ui.py</code></p>
+<p>Rebuild the wheel: <code>python -m pip wheel --no-deps --wheel-dir releases .</code></p>
+</body></html>

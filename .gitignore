@@ -3,8 +3,8 @@ __pycache__/
 *.egg-info/
 .venv/
 build/
+*.sqlite3*
+season-*.json
 dist/
 installer-output/
 *.spec
-*.sqlite3*
-season-*.json
