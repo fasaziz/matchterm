@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+build/
+dist/
+installer-output/
+*.spec
+*.sqlite3*
+season-*.json
