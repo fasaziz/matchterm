@@ -35,6 +35,22 @@ These are captures of the actual terminal app in a test environment, with illust
 
 ![Completed season league table](docs/images/league-table.png)
 
+### Start a match when you’re ready
+
+![Prematch screen with Start Match button](docs/images/start-match.png)
+
+### Simulate the whole season
+
+![Confirmation before simulating all remaining fixtures](docs/images/season-confirmation.png)
+
+### Match results
+
+![Completed fixtures and final scores](docs/images/match-results.png)
+
+### Season goals and assists
+
+![Top goal scorers and assist leaders](docs/images/season-player-stats.png)
+
 ### Updating an existing installation
 
 1. Press **Q** to close the running game.
